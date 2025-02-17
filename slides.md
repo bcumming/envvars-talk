@@ -1,7 +1,7 @@
 ---
 # You can also start simply with 'default'
 theme: seriph
-background: ./title.png
+background: https://raw.githubusercontent.com/bcumming/envvars-talk/refs/heads/main/title.png
 # some information about your slides (markdown enabled)
 title: HPC Environments
 info: |
