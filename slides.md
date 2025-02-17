@@ -33,7 +33,7 @@ We all intuitively understand what an environment is.
 
 User ticket: "my application that worked last week stopped working"
 
-Reply: "first thing we might ask is "tell me about your environment":
+Reply: "tell me about your environment":
 
 <br>
 
@@ -331,7 +331,7 @@ Sometimes they are appropriate, or the benefits of the easy solution outweigh th
     * looking at you [Docker](https://github.com/moby/moby/issues/20693) (JFrog, Podman, and friends all use `$HOME/.docker`)
     * that 8 year old ticket illustrates the importance of making the right decision early is so important.
     * how would `export XDG_CONFIG_HOME=$HOME/$(uname -m)/config` help on Alps?
-* because it is easy comparted to the "correct solution"... but don't [be lazy](https://github.com/mesonbuild/meson/discussions/13811).
+* because it is easy compared to the "correct solution"
 
 **Hint 1**: Perform all `getenv` calls before any call to fork.
 * +10 points for parsing the environment into a read only data structure on startup
@@ -353,7 +353,7 @@ In C++ we try to make functions _pure_
 
 ```cpp
 string default_path;
-void foo()
+void foo();
 { /* use default_path */ }
 int main(int argc, char** argv) {
     default_path = set_params(argv);
@@ -362,7 +362,7 @@ int main(int argc, char** argv) {
 ```
 ```cpp
 struct params {string default_path;};
-void foo(const string& default_path)
+void foo(const string& default_path);
 { /* use default_path */ }
 int main(int argc, char** argv) {
     const params = set_params(argv);
@@ -555,8 +555,8 @@ Environment variables are inherited from the host shell/process
 
 * `meson.build` and [`meson_options.txt`](https://gitlab.freedesktop.org/xorg/xserver/-/blob/master/meson_options.txt?ref_type=heads)
     * declare all arguments in one place
-    * no environment variables
-* `uenv run`: wrap each command with it's executation environment
+    * [no environment variables](https://github.com/mesonbuild/meson/discussions/13811).
+* `uenv run`: wrap each command with its executation environment
     ```
     uenv run --view=default prgenv-gnu ./simulation.sh
     uenv run --view=default netcdf-tools ./generate-images.sh
@@ -565,7 +565,10 @@ Environment variables are inherited from the host shell/process
 * Environment Description Files (EDF) in the container engine
 * using [`uv`](https://docs.astral.sh/uv/guides/install-python/) [instead of pip](https://github.com/eth-cscs/cscs-docs/blob/main/serve)
 
-
 ---
 
-# The end
+# The End
+
+<br>
+
+Thanks for watching.
